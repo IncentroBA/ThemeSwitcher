@@ -1,0 +1,35 @@
+::view-transition-old(root) {
+  animation-delay: var(--transition-speed);
+}
+
+::view-transition-new(root) {
+  animation: circle-in var(--transition-speed);
+}
+
+@keyframes circle-in {
+  from {
+    clip-path: circle(0% at 50% 0%)
+  }
+
+  to {
+    clip-path: circle(120% at 50% 0%)
+  }
+}
+
+:root {
+  --transition-speed: .5s;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --theme: light;
+    color-scheme: light;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme: dark;
+    color-scheme: dark;
+  }
+}
