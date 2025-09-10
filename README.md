@@ -8,15 +8,24 @@ Read mode `(boolean)` to have a widget to read on every page, but to set via Dro
 
 ## Usage
 
-Place one widget on a specific settings page with `Read mode (boolean)` set to false (default). This will present the
-dropdown to be able to set the theme.
+### Add the ThemeSwitcher widget for user selection
 
-Place another widget with the boolean set to true. This widget will only read the current theme settings. It's handy to
-place this widget in the layout so that it will be used on all pages.
+Place one instance of the widget on a dedicated settings page with `Read mode (boolean)` set to false (default). This
+will show a dropdown where users can select their preferred theme.
 
-In order to actually see CSS changes there need to be CSS variables defined and assigned for the light and dark theme.
-The theme switcher basically sets a --theme CSS variable at the HTML level. The implementation can and probably will
-differ for each project.
+### Add the ThemeSwitcher widget for applying the theme
+
+Place another instance of the widget with Read mode set to true. This widget only reads the current theme setting. A
+common practice is to place it in your layout so it’s applied across all pages.
+
+### Define your CSS variables
+
+To see visual changes, you’ll need to define CSS variables for both light and dark themes. The ThemeSwitcher sets a
+global `--theme` variable on the `<html>` element. The exact implementation depends on your project setup.
+
+**Note:** This widget only provides the controls for theme switching. It does not include a ready-to-use theme
+implementation (yet). This ensures maximum flexibility for customization, but means it won’t act as a plug-and-play
+solution out of the box.
 
 For light theme settings:
 
