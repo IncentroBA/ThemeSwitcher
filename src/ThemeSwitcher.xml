@@ -10,7 +10,31 @@
         <propertyGroup caption="General">
             <property key="readMode" type="boolean" defaultValue="false">
                 <caption>Read mode</caption>
-                <description>Use this widget only to read the theme value</description>
+                <description>Use this widget only to read the theme value.</description>
+            </property>
+            <property key="optionSystem" type="textTemplate">
+                <caption>System option title</caption>
+                <description>Translatable title for the System option.</description>
+                <translations>
+                    <translation lang="en_US">System</translation>
+                    <translation lang="nl_NL">Systeem</translation>
+                </translations>
+            </property>
+            <property key="optionLight" type="textTemplate">
+                <caption>Light option title</caption>
+                <description>Translatable title for the default option, presumably light.</description>
+                <translations>
+                    <translation lang="en_US">Light</translation>
+                    <translation lang="nl_NL">Licht</translation>
+                </translations>
+            </property>
+            <property key="optionDark" type="textTemplate">
+                <caption>Dark option title</caption>
+                <description>Translatable title for the alternative option, presumably dark.</description>
+                <translations>
+                    <translation lang="en_US">Dark</translation>
+                    <translation lang="nl_NL">Donker</translation>
+                </translations>
             </property>
         </propertyGroup>
     </properties>

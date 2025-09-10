@@ -15,7 +15,8 @@ Place another widget with the boolean set to true. This widget will only read th
 place this widget in the layout so that it will be used on all pages.
 
 In order to actually see CSS changes there need to be CSS variables defined and assigned for the light and dark theme.
-The theme switcher basically sets a --theme CSS variable at the HTML level.
+The theme switcher basically sets a --theme CSS variable at the HTML level. The implementation can and probably will
+differ for each project.
 
 For light theme settings:
 

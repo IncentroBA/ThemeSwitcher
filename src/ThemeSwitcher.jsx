@@ -1,7 +1,7 @@
 import "./ui/ThemeSwitcher.css";
 import { createElement, useEffect, useState } from "react";
 
-export function ThemeSwitcher({ readMode }) {
+export function ThemeSwitcher({ optionDark, optionLight, optionSystem, readMode }) {
     const [theme, setTheme] = useState(() => {
         const currentTheme = localStorage.getItem("currentTheme");
         return currentTheme ? currentTheme : "system";
@@ -48,9 +48,9 @@ export function ThemeSwitcher({ readMode }) {
                         onChange={handleThemeChange}
                         value={theme}
                     >
-                        <option value="system">System</option>
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
+                        <option value="system">{optionSystem}</option>
+                        <option value="light">{optionLight}</option>
+                        <option value="dark">{optionDark}</option>
                     </select>
                 </fieldset>
             </form>

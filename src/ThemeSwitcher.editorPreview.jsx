@@ -1,7 +1,7 @@
 import { createElement } from "react";
 
-export function preview() {
-    return <div></div>;
+export function preview({ readMode }) {
+    return <div className="theme-switcher-preview">Theme Switcher: {readMode === true ? "Read" : "Edit"} mode</div>;
 }
 
 export function getPreviewCss() {

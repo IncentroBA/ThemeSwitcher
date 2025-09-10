@@ -33,3 +33,7 @@
     color-scheme: dark;
   }
 }
+
+.theme-switcher-preview {
+  padding: 10px;
+}

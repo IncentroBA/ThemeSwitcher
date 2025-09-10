@@ -1,3 +1,5 @@
+import { hidePropertiesIn } from "@mendix/pluggable-widgets-tools";
+
 /**
  * @typedef Property
  * @type {object}
@@ -46,14 +48,21 @@
  * @param {("web"|"desktop")} target
  * @returns {Properties}
  */
-export function getProperties(values, defaultProperties, target) {
-    // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
-    /* Example
-    if (values.myProperty === "custom") {
-        delete defaultProperties.properties.myOtherProperty;
+// export function getProperties(values, defaultProperties, target) {
+//     // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
+//     /* Example
+//     if (values.myProperty === "custom") {
+//         delete defaultProperties.properties.myOtherProperty;
+//     }
+//     */
+//     return defaultProperties;
+// }
+
+export function getProperties(values, defaultValues) {
+    if (values.readMode === true) {
+        hidePropertiesIn(defaultValues, values, ["optionSystem", "optionLight", "optionDark"]);
     }
-    */
-    return defaultProperties;
+    return defaultValues;
 }
 
 // /**
@@ -76,6 +85,23 @@ export function getProperties(values, defaultProperties, target) {
 //    return errors;
 // }
 
+// export function check(values) {
+//     const errors = [];
+//     if (values.readMode === true) {
+//         errors.push({
+//             property: "optionLight",
+//             message: "optionLight"
+//         });
+//     }
+//     if (values.readMode === false) {
+//         errors.push({
+//             property: "optionSystem",
+//             message: "optionSystem"
+//         });
+//     }
+//     return errors;
+// }
+
 // /**
 //  * @param {object} values
 //  * @param {boolean} isDarkMode
@@ -89,6 +115,27 @@ export function getProperties(values, defaultProperties, target) {
 //         children: []
 //     };
 // }
+
+export function getPreview(values, isDarkMode, version) {
+    return {
+        type: "Container",
+        borders: true,
+        backgroundColor: isDarkMode ? "#313131" : "#eaeaea",
+        children: [
+            {
+                type: "Container",
+                borders: true,
+                padding: 10,
+                children: [
+                    {
+                        type: "Text",
+                        content: "Theme Switcher: " + (values.readMode === true ? "Read mode" : "Edit mode")
+                    }
+                ]
+            }
+        ]
+    };
+}
 
 // /**
 //  * @param {Object} values
