@@ -12,7 +12,7 @@
                 <caption>Read mode</caption>
                 <description>Use this widget only to read the theme value.</description>
             </property>
-            <property key="optionSystem" type="textTemplate">
+            <property key="optionSystem" type="textTemplate" required="false">
                 <caption>System option title</caption>
                 <description>Translatable title for the System option.</description>
                 <translations>

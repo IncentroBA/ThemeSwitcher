@@ -48,7 +48,7 @@ export function ThemeSwitcher({ optionDark, optionLight, optionSystem, readMode 
                         onChange={handleThemeChange}
                         value={theme}
                     >
-                        <option value="system">{optionSystem.value}</option>
+                        {optionSystem?.value && <option value="system">{optionSystem.value}</option>}
                         <option value="light">{optionLight.value}</option>
                         <option value="dark">{optionDark.value}</option>
                     </select>
