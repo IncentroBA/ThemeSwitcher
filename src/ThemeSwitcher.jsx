@@ -1,5 +1,5 @@
 import "./ui/ThemeSwitcher.css";
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function ThemeSwitcher({ optionDark, optionLight, optionSystem, readMode }) {
     const [theme, setTheme] = useState(() => {
