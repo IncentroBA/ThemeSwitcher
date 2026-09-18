@@ -2,24 +2,36 @@ import "./ui/ThemeSwitcher.css";
 import { useEffect, useState } from "react";
 
 export function ThemeSwitcher({ optionDark, optionLight, optionSystem, readMode }) {
+    const systemOptionEnabled = Boolean(optionSystem?.value);
     const [theme, setTheme] = useState(() => {
         const currentTheme = localStorage.getItem("currentTheme");
         return currentTheme ? currentTheme : "system";
     });
 
+    const activeTheme = theme === "system" && !systemOptionEnabled ? "light" : theme;
+
     useEffect(() => {
         localStorage.setItem("currentTheme", theme);
-        let newTheme = theme;
-        if (newTheme === "system") {
-            newTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+        const applyTheme = resolvedTheme => {
+            document.documentElement.style.setProperty("--theme", resolvedTheme);
+            document.documentElement.style.setProperty("color-scheme", resolvedTheme);
+        };
+
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        applyTheme(activeTheme === "system" ? (mediaQuery.matches ? "dark" : "light") : activeTheme);
+
+        if (activeTheme !== "system") {
+            return;
         }
 
-        if (newTheme === "dark") {
-            document.documentElement.style.setProperty("--theme", newTheme);
-        } else {
-            document.documentElement.style.removeProperty("--theme");
-        }
-    }, [theme]);
+        const handleSystemThemeChange = event => {
+            applyTheme(event.matches ? "dark" : "light");
+        };
+
+        mediaQuery.addEventListener("change", handleSystemThemeChange);
+        return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    }, [theme, activeTheme]);
 
     const handleThemeChange = event => {
         const newTheme = event.target.value;
@@ -46,9 +58,9 @@ export function ThemeSwitcher({ optionDark, optionLight, optionSystem, readMode 
                         id="theme-select"
                         name="theme"
                         onChange={handleThemeChange}
-                        value={theme}
+                        value={activeTheme}
                     >
-                        {optionSystem?.value && <option value="system">{optionSystem.value}</option>}
+                        {systemOptionEnabled && <option value="system">{optionSystem.value}</option>}
                         <option value="light">{optionLight.value}</option>
                         <option value="dark">{optionDark.value}</option>
                     </select>

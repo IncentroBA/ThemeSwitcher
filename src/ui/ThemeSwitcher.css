@@ -20,20 +20,6 @@
   --transition-speed: .5s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --theme: light;
-    color-scheme: light;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --theme: dark;
-    color-scheme: dark;
-  }
-}
-
 .theme-switcher-preview {
   padding: 10px;
 }
