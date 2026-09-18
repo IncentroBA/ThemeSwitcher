@@ -1,7 +1,7 @@
 {
   "name": "themeswitcher",
   "widgetName": "ThemeSwitcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A switch button to toggle between the current theme and a alternative theme, for instance dark mode.",
   "copyright": "Incentro International B.V.",
   "author": "Rob Duits",
